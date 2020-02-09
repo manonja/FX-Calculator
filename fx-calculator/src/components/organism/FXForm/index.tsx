@@ -2,10 +2,11 @@ import { Button } from '@material-ui/core';
 import { Formik, Form, Field } from 'formik';
 import * as React from 'react';
 import { InputField } from '../../atoms/InputField';
+// import { AppContextConsumer } from '../../../context';
 
 interface Values {
-    base: string;
-    target: string;
+    from_currency: string;
+    to_currency: string;
     amount: number;
 }
 
@@ -16,8 +17,11 @@ interface FormProps {
 const FXForm: React.FC<FormProps> = ({ onSubmit }) => {
     return (
         <div style={{ textAlign: 'center' }}>
+            {/* <AppContextConsumer>{appContext => appContext && ( */}
+
             <Formik
-                initialValues={{ base: '', target: '', amount: 0 }}
+                // initialValues={{ from_currency: appContext.from_currency, to_currency: appContext.to_currency, amount: appContext.amount }}
+                initialValues={{from_currency: 'EUR', to_currency: 'GBP', amount: 100, conversion_rate: 1.1 }}
                 onSubmit={values => {
                     onSubmit(values);
                 }}
@@ -25,10 +29,10 @@ const FXForm: React.FC<FormProps> = ({ onSubmit }) => {
                 {({values}) => (
                     <Form>
                         <div>
-                            <Field name="base" placeholder="Choose base" component={InputField}></Field>
+                            <Field name="from_currency" placeholder="Choose base currency" component={InputField}></Field>
                         </div>
                         <div>
-                            <Field name="target" placeholder="Choose target" component={InputField}></Field>
+                            <Field name="to_currency" placeholder="Choose target currecy" component={InputField}></Field>
                         </div>
                         <div>
                             <Field name="amount" placeholder="Amount" component={InputField}></Field>
@@ -37,6 +41,9 @@ const FXForm: React.FC<FormProps> = ({ onSubmit }) => {
                     </Form>
                 )}
             </Formik>
+            {/* )} */}
+            {/* </AppContextConsumer> */}
+
         </div>
     );
 };
