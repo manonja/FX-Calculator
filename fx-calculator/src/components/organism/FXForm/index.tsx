@@ -2,6 +2,8 @@ import { Button } from '@material-ui/core';
 import { Formik, Form, Field } from 'formik';
 import * as React from 'react';
 import { InputField } from '../../atoms/InputField';
+import { SelectField } from '../../atoms/SelectField';
+
 // import { AppContextConsumer } from '../../../context';
 
 interface Values {
@@ -26,14 +28,16 @@ const FXForm: React.FC<FormProps> = ({ onSubmit }) => {
                     onSubmit(values);
                 }}
             >
-                {({values}) => (
+                {() => (
                     <Form>
                         <div>
-                            <Field name="from_currency" placeholder="Choose base currency" component={InputField}></Field>
+                            <Field name="from_currency" placeholder="Choose base currency" component={SelectField}></Field>
                         </div>
+                        <br/>
                         <div>
-                            <Field name="to_currency" placeholder="Choose target currecy" component={InputField}></Field>
+                            <Field name="to_currency" placeholder="Choose target currency" component={SelectField}></Field>
                         </div>
+                        <br/>
                         <div>
                             <Field name="amount" placeholder="Amount" component={InputField}></Field>
                         </div>
