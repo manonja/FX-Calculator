@@ -30,7 +30,7 @@ const SPA = () => {
           .then((data) => {
             const ts : FXTimeSeries = []
             const fxData = data["Time Series FX (Daily)"]
-            Object.keys(fxData).map((key: any) => ts.push({t: moment(key).unix(), x: fxData[key]["4. close"]}))
+            Object.keys(fxData).map((key: any) => ts.push({t: moment(key).valueOf(), y: parseFloat(fxData[key]["4. close"])}))
             const timeSeries = ts.slice(0, 30)
             dispatch({type: ActionType.UPDATE_FX_HISTORY, payload: {timeSeries}})
           })
