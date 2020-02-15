@@ -1,9 +1,10 @@
 import * as React from 'react';
 import {FXFormState} from '../components/organism/FXForm'
+import { FXHistory, FXHistoryInit, FXTimeSeries } from '../components/atoms/FXGraph'
 
-export enum ActionType { START_APP, UPDATE_FORM, UPDATE_FX_RATE };
+export enum ActionType { START_APP, UPDATE_FORM, UPDATE_FX_RATE, UPDATE_FX_HISTORY };
 
-export interface AppState extends FXFormState  {
+export interface AppState extends FXFormState, FXHistory {
     fx_rate: number
 };
 
@@ -11,14 +12,16 @@ export const initialFXState: AppState = {
     from_ccy: 'EUR',
     to_ccy: 'GBP',
     amount: 10,
-    fx_rate: 0
+    fx_rate: 0,
+    timeSeries: FXHistoryInit.timeSeries
   };
 
 
 export type Action =
   { type: ActionType.START_APP } |
   { type: ActionType.UPDATE_FORM, payload: {from_ccy: string, to_ccy: string, amount: number} } |
-  { type: ActionType.UPDATE_FX_RATE, payload: {fx_rate: number} }
+  { type: ActionType.UPDATE_FX_RATE, payload: {fx_rate: number } } |
+  { type: ActionType.UPDATE_FX_HISTORY, payload: {timeSeries: FXTimeSeries } }
   ;
 
 
@@ -34,6 +37,9 @@ export const reducer = (state: AppState, action: Action ) : AppState => {
         
         case ActionType.UPDATE_FX_RATE:
             return {...state, fx_rate: action.payload.fx_rate };
+
+        case ActionType.UPDATE_FX_HISTORY:
+            return {...state, timeSeries: action.payload.timeSeries };
                 
         default:
             throw new Error();

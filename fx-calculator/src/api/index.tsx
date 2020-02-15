@@ -8,7 +8,7 @@ export const getFXUrl = (fromCcy: string, toCcy: string): string => {
     return constructAlphaVantageUrl('CURRENCY_EXCHANGE_RATE', `from_currency=${fromCcy}&to_currency=${toCcy}`)
 }
 
-export const getFXDailyUrl = (fromCcy: string, toCcy: string): string => {
-    return constructAlphaVantageUrl('CURRENCY_EXCHANGE_RATE', `from_symbol=${fromCcy}&to_symbol=${toCcy}`)
+export const getFXHistoryUrl = (fromCcy: string, toCcy: string): string => {
+    return constructAlphaVantageUrl('FX_DAILY', `from_symbol=${fromCcy}&to_symbol=${toCcy}`)
 }
 
