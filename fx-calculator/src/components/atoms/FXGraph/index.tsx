@@ -28,7 +28,7 @@ export const FXChart: FunctionComponent<FXChartProps> = ({ timeSeries, timeSerie
                     data: timeSeries,
                     type: 'line',
                     fill: false,
-                    lineTension: 0.1,
+                    lineTension: 0.1, // see https://raw.githubusercontent.com/jerairrest/react-chartjs-2/master/example/src/components/randomizedLine.js
                     backgroundColor: 'rgba(75,192,192,0.4)',
                     borderColor: 'rgba(75,192,192,1)',
                     borderCapStyle: 'butt',
@@ -50,9 +50,6 @@ export const FXChart: FunctionComponent<FXChartProps> = ({ timeSeries, timeSerie
         };
 
         const options: object = {
-            // animation: {
-            //     duration: 0
-            // },
             scales: {
                 xAxes: [{
                     type: 'time',
