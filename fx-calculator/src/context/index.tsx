@@ -3,19 +3,18 @@ import * as React from 'react';
 export enum ActionType { START_APP, UPDATE_STATE };
 
 export interface FXUIState  {
-    from_currency: string,
-    to_currency: string,
+    from_ccy: string,
+    to_ccy: string,
     amount: number,
     conversion_rate: number
 };
 
 export const defaultFXState: FXUIState = {
-    from_currency: 'EUR',
-    to_currency: 'GBP',
+    from_ccy: 'EUR',
+    to_ccy: 'GBP',
     amount: 10,
     conversion_rate: 0
   };
-
 
 
 export type Action =
@@ -30,11 +29,11 @@ interface FXUI extends FXUIState {
 export const reducer = (state: FXUIState, action: Action ) : FXUIState => {
     switch (action.type) {
         case ActionType.START_APP:
-            return {...state, from_currency: defaultFXState.from_currency, to_currency: defaultFXState.to_currency, 
+            return {...state, from_ccy: defaultFXState.from_ccy, to_ccy: defaultFXState.to_ccy, 
                 amount: defaultFXState.amount};
 
         case ActionType.UPDATE_STATE:
-            return {...state, from_currency: action.payload.from_currency, to_currency: action.payload.to_currency, 
+            return {...state, from_ccy: action.payload.from_ccy, to_ccy: action.payload.to_ccy, 
                 amount: action.payload.amount, conversion_rate: 1.1 };
                 
         // TODO: add remaining actions

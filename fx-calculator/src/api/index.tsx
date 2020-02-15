@@ -4,7 +4,7 @@ const API_KEY: string = 'NTOQMSUKNQT0Y6ZW';
 export const getExchangeRate = (func: void, fromCcy: string, toCcy: string) => {
     console.log('CURRENCY_EXCHANGE_RATE')
     // TODO: fetch data
-    return `https://www.alphavantage.co/query?function=${func}&from_currency=${fromCcy}&to_currency=${toCcy}&apikey=${API_KEY}`;
+    return `https://www.alphavantage.co/query?function=${func}&from_ccy=${fromCcy}&to_ccy=${toCcy}&apikey=${API_KEY}`;
 }
 
 export const getFXDaily = (func: void, fromSymbol: string, toSymbol: string ) => {

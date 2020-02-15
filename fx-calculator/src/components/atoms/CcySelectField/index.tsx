@@ -7,12 +7,12 @@ interface Props extends FieldProps {
     placeholder: string;
 }
 
-export const SelectField: React.FC<Props> = ({ placeholder, field }) => {
+export const CcySelectField: React.FC<Props> = ({ placeholder, field }) => {
     return (
         <>
             <InputLabel>{placeholder}</InputLabel>
             <Select {...field}>
-                <MenuItem value={'GDP'}>GDP</MenuItem>
+                <MenuItem value={'GBP'}>GBP</MenuItem>
                 <MenuItem value={'EUR'}>EUR</MenuItem>
                 <MenuItem value={'USD'}>USD</MenuItem>
             </Select>

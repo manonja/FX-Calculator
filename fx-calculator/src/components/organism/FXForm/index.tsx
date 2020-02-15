@@ -2,28 +2,24 @@ import { Button } from '@material-ui/core';
 import { Formik, Form, Field } from 'formik';
 import * as React from 'react';
 import { InputField } from '../../atoms/InputField';
-import { SelectField } from '../../atoms/SelectField';
+import { CcySelectField } from '../../atoms/CcySelectField';
+import { FXUIState } from '../../../context'
 
 // import { AppContextConsumer } from '../../../context';
 
-interface Values {
-    from_currency: string;
-    to_currency: string;
-    amount: number;
-}
-
 interface FormProps {
-    onSubmit: (values: Values) => void;
+    onSubmit: (values: FXUIState) => void;
+    state: FXUIState;
 }
 
-const FXForm: React.FC<FormProps> = ({ onSubmit }) => {
+const FXForm: React.FC<FormProps> = ({ onSubmit, state }) => {
     return (
         <div style={{ textAlign: 'center' }}>
             {/* <AppContextConsumer>{appContext => appContext && ( */}
 
             <Formik
-                // initialValues={{ from_currency: appContext.from_currency, to_currency: appContext.to_currency, amount: appContext.amount }}
-                initialValues={{from_currency: 'EUR', to_currency: 'GBP', amount: 100, conversion_rate: 1.1 }}
+                // initialValues={{ from_ccy: appContext.from_ccy, to_ccy: appContext.to_ccy, amount: appContext.amount }}
+                initialValues={{from_ccy: state.from_ccy, to_ccy: state.to_ccy, amount: state.amount, conversion_rate: 1.1 }}
                 onSubmit={values => {
                     onSubmit(values);
                 }}
@@ -31,11 +27,11 @@ const FXForm: React.FC<FormProps> = ({ onSubmit }) => {
                 {() => (
                     <Form>
                         <div>
-                            <Field name="from_currency" placeholder="Choose base currency" component={SelectField}></Field>
+                            <Field name="from_ccy" placeholder="Choose base currency" component={CcySelectField}></Field>
                         </div>
                         <br/>
                         <div>
-                            <Field name="to_currency" placeholder="Choose target currency" component={SelectField}></Field>
+                            <Field name="to_ccy" placeholder="Choose target currency" component={CcySelectField}></Field>
                         </div>
                         <br/>
                         <div>
