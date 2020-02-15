@@ -21,9 +21,6 @@ const SPA = () => {
             const fx_rate: number = parseFloat(data["Realtime Currency Exchange Rate"]["5. Exchange Rate"])
             dispatch({type: ActionType.UPDATE_FX_RATE, payload: {fx_rate}})
           })
-
-          // console.log(from_ccy, to_ccy, amount)
-          console.log(state)
           }}>
 
           </FXForm>
