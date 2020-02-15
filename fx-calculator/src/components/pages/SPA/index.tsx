@@ -38,7 +38,7 @@ const SPA = () => {
           }}>
 
           </FXForm>
-        <ResultField result={state.amount * state.fx_rate}/>
+        <ResultField to_ccy={state.to_ccy} result={state.amount * state.fx_rate}/>
         <FXChart timeSeries={state.timeSeries} timeSeriesLoaded={state.timeSeriesLoaded} ccyPair={`${state.from_ccy}/${state.to_ccy}`}  />
    </>
   );
