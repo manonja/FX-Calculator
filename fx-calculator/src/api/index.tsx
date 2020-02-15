@@ -1,4 +1,4 @@
-const API_KEY = 'NTOQMSUKNQT0Y6ZW';
+const API_KEY: string = 'NTOQMSUKNQT0Y6ZW';
 
 
 export const getExchangeRate = (func: void, fromCcy: string, toCcy: string) => {
