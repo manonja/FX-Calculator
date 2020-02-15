@@ -15,12 +15,16 @@ export const FXHistoryInit: FXHistory = {
     timeSeriesLoaded: false,
 };
 
-export const FXChart: FunctionComponent<FXHistory> = ({ timeSeries, timeSeriesLoaded }) => {
+interface FXChartProps extends FXHistory {
+    ccyPair: string
+};
+
+export const FXChart: FunctionComponent<FXChartProps> = ({ timeSeries, timeSeriesLoaded, ccyPair }) => {
     if (timeSeriesLoaded) {
         const data: object = {
             datasets: [
                 {
-                    label: 'TEST',
+                    label: ccyPair,
                     data: timeSeries,
                     type: 'line',
                     fill: false,
