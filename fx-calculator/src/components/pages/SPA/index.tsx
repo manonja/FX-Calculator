@@ -5,7 +5,8 @@ import FXForm from '../../organism/FXForm'
 import ResultField from '../../atoms/ResultField'
 import { AppState, Action, initialFXState, reducer, ActionType } from '../../../context'
 import {getFXUrl, getFXHistoryUrl} from '../../../api'
-import { FXTimeSeries } from '../../atoms/FXGraph';
+import { FXTimeSeries, FXChart } from '../../atoms/FXGraph';
+import moment from 'moment';
 
 const SPA = () => {
   const [ state, dispatch ] = React.useReducer<React.Reducer<AppState, Action>>(reducer, initialFXState);
@@ -29,7 +30,7 @@ const SPA = () => {
           .then((data) => {
             const ts : FXTimeSeries = []
             const fxData = data["Time Series FX (Daily)"]
-            Object.keys(fxData).map((key: any) => ts.push({x: new Date(key), y: fxData[key]["4. close"]}))
+            Object.keys(fxData).map((key: any) => ts.push({t: moment(key).unix(), x: fxData[key]["4. close"]}))
             const timeSeries = ts.slice(0, 30)
             dispatch({type: ActionType.UPDATE_FX_HISTORY, payload: {timeSeries}})
           })
@@ -38,7 +39,7 @@ const SPA = () => {
 
           </FXForm>
         <ResultField result={state.amount * state.fx_rate}/>
-        {console.log(state.timeSeries)}
+        <FXChart timeSeries={state.timeSeries} timeSeriesLoaded={state.timeSeriesLoaded} />
    </>
   );
 }

@@ -13,7 +13,8 @@ export const initialFXState: AppState = {
     to_ccy: 'GBP',
     amount: 10,
     fx_rate: 0,
-    timeSeries: FXHistoryInit.timeSeries
+    timeSeries: FXHistoryInit.timeSeries,
+    timeSeriesLoaded: FXHistoryInit.timeSeriesLoaded
   };
 
 
@@ -39,7 +40,7 @@ export const reducer = (state: AppState, action: Action ) : AppState => {
             return {...state, fx_rate: action.payload.fx_rate };
 
         case ActionType.UPDATE_FX_HISTORY:
-            return {...state, timeSeries: action.payload.timeSeries };
+            return {...state, timeSeries: action.payload.timeSeries, timeSeriesLoaded: true };
                 
         default:
             throw new Error();
