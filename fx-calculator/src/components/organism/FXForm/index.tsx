@@ -3,14 +3,17 @@ import { Formik, Form, Field } from 'formik';
 import * as React from 'react';
 import { InputField } from '../../atoms/InputField';
 import { CcySelectField } from '../../atoms/CcySelectField';
-import { FXUIState } from '../../../context'
 
-// import { AppContextConsumer } from '../../../context';
+export interface FXFormState {
+    from_ccy: string,
+    to_ccy: string,
+    amount: number
+};
 
 interface FormProps {
-    onSubmit: (values: FXUIState) => void;
-    state: FXUIState;
-}
+    onSubmit: (values: FXFormState) => void;
+    state: FXFormState;
+};
 
 const FXForm: React.FC<FormProps> = ({ onSubmit, state }) => {
     return (
@@ -19,7 +22,7 @@ const FXForm: React.FC<FormProps> = ({ onSubmit, state }) => {
 
             <Formik
                 // initialValues={{ from_ccy: appContext.from_ccy, to_ccy: appContext.to_ccy, amount: appContext.amount }}
-                initialValues={{from_ccy: state.from_ccy, to_ccy: state.to_ccy, amount: state.amount, conversion_rate: 1.1 }}
+                initialValues={{from_ccy: state.from_ccy, to_ccy: state.to_ccy, amount: state.amount }}
                 onSubmit={values => {
                     onSubmit(values);
                 }}
