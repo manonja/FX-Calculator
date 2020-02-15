@@ -36,7 +36,7 @@ export const reducer = (state: AppState, action: Action ) : AppState => {
             return {...state, fx_rate: action.payload.fx_rate };
                 
         default:
-            return state
+            throw new Error();
     }
 };
 
