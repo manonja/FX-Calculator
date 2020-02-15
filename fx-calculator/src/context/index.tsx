@@ -47,21 +47,4 @@ export const reducer = (state: AppState, action: Action ) : AppState => {
     }
 };
 
-// export const initialFXUI = (): FXUI => {
-//     const [FXUIState, dispatch ] = React.useReducer<React.Reducer<FXUIState, Action>>(reducer, initialFXState);
-//     return {
-//         updateFromCcy: (from: string): void => dispatch({...FXUIState, from: from, type: ActionType.UPDATE_FROM_CURRENCY }),
-//         // updateToCcy: (to: string): void => dispatch({...FXUIState, to: to, type: ActionType.UPDATE_TO_CURRENCY }),
-//         // updateAmount: (amount: number): void => dispatch({...FXUIState, amount: amount, type: ActionType.UPDATE_AMOUNT })
-//     };
-// };
 
-// const ctxt = React.createContext<FXUI | null>(null);
-
-// export const AppContextProvider = ctxt.Provider;
-  
-// export const AppContextConsumer = ctxt.Consumer;
-
-// export const AppContext = ctxt;
-
-// export const contextFxUI = React.createContext<FXUI | null>(null);
