@@ -17,20 +17,20 @@ const SPA = () => {
         <FXForm  state={initialFXState} onSubmit={({from_ccy, to_ccy, amount}) => {
           dispatch({type: ActionType.UPDATE_FORM, payload: { from_ccy, to_ccy, amount }});
           // TODO: refactor fetch
-          // fetch(getFXUrl(from_ccy, to_ccy))
-          // .then(res => res.json())
-          // .then((data) => {
-          //   const fx_rate: number = parseFloat(data["Realtime Currency Exchange Rate"]["5. Exchange Rate"])
-          //   dispatch({type: ActionType.UPDATE_FX_RATE, payload: {fx_rate}})
-          // })
+          fetch(getFXUrl(from_ccy, to_ccy))
+          .then(res => res.json())
+          .then((data) => {
+            const fx_rate: number = parseFloat(data["Realtime Currency Exchange Rate"]["5. Exchange Rate"])
+            dispatch({type: ActionType.UPDATE_FX_RATE, payload: {fx_rate}})
+          })
           
           // TODO: refactor fetch
-          const reduced: any = fetch(getFXHistoryUrl(from_ccy, to_ccy))
+          fetch(getFXHistoryUrl(from_ccy, to_ccy))
           .then(res => res.json())
           .then((data) => {
             const ts : FXTimeSeries = []
             const fxData = data["Time Series FX (Daily)"]
-            Object.keys(fxData).map((key: any) => ts.push({t: moment(key).valueOf(), y: parseFloat(fxData[key]["4. close"])}))
+            Object.keys(fxData).map((key: any) => ts.push({t: moment(key + "T16:30:00Z").valueOf(), y: parseFloat(fxData[key]["4. close"])}))
             const timeSeries = ts.slice(0, 30)
             dispatch({type: ActionType.UPDATE_FX_HISTORY, payload: {timeSeries}})
           })
@@ -39,7 +39,7 @@ const SPA = () => {
 
           </FXForm>
         <ResultField result={state.amount * state.fx_rate}/>
-        <FXChart timeSeries={state.timeSeries} timeSeriesLoaded={state.timeSeriesLoaded} />
+        <FXChart timeSeries={state.timeSeries} timeSeriesLoaded={state.timeSeriesLoaded} ccyPair={`${state.from_ccy}/${state.to_ccy}`}  />
    </>
   );
 }
