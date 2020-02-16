@@ -1,49 +1,54 @@
 # FX-Calculator
 
-FX Calculator is an interactive web application 
+FX Calculator is an interactive web application that allows users to enter an amount in one currency and convert it into a different currency. It also display the exchange rate for a chosen currency pair for the last 30 days in a graph. The data is provided by
+https://www.alphavantage.co/.
 
-![Alt Text](https://media.giphy.com/media/RrU8f9lImvJja/giphy.gif)
+![Alt Text](https://media.giphy.com/media/gQdejV5BBChHi/giphy.gif)
 
 
-### Motivations
-Build a fullstack app that uses Ruby for the backend with PostgreSQL and React for the frontend.  
+### Quick Start
+Clone the project https://github.com/manonja/FX-Calculator
 
-### Demo
-[Here!](https://www.youtube.com/watch?v=QzSKVSNKPkY&t=8s) 
-
-### Technical details
-- Front-end built with **React** and **React Router**.
-- Styling with pure **CSS** and **MDBootstrap**.
-- **PostgreSQL** database.
-- Authentication with **JWT**.
-- Developed a **Ruby on Rails** API backend with 5 different endpoints: for users, farmers, customers, products and categories.
-- Used **serializer** to format the JSON file.
-
-### Installation
-Fork and clone the project https://github.com/manonja/farms-to-people-frontend
-Fork and clone the project https://github.com/manonja/farms-to-people-server
-
-In your terminal, go to `farms-to-people-server`
-- run `rails db:create`
-- `rails db:migrate`
-- `rails db:seed`
-- `rails s`
-
-The server will start on http://localhost:3001
-
-Then go to `farms-to-people-frontend`
-- run `npm install`
-- `npm start`
+- `cd FX-Calculator`
+-  `yarn`
+- `yarn start`
 
 The app will run on http://localhost:3000
 
-### How to use?
-If you are a new user, signup (as a farmer or as a customer), otherwise, login into your account. 
+### Deliverables
+- It should be built using TypeScript and React. 
+- It should minimize the number of API requests to make the app as efficient as possible.
+- It should have a good looking, easy to understand interface. 
+- It should be built with flexibility in mind, for example being able to switch data provider easily.
 
-If you are a farmer, you can see the current product you have on sale. You can add as many products as you want, and delete them. 
+### Main Design Decisions
+- Components architecture: I chose to use the atomic design to organize React components around a methodic and consistent system. providing a systematic approach aligned with code reusability. (The atomic design consists of atoms, molecules, organism and templates/pages.)
 
-If you are a customer, you can see all the products farmers have on sale, select different categories, and add products to you basket. You can see your basket and delete products as well. Clicking on checkout won't do anything for now. 
+- State management: I chose to use React Hooks with `useReducer`. This approach allowed me to manage the state from a single source of truth without the complexity of Redux. Here we just set an `initialState` in the `store` with a reducer function that will update the state depending on the action we dispatch.
 
+### Improvements
+- Use `async/await` and implement a error handling for API requests.
+- Use the Ramda library and the `R.once()` function to limit the number of API call to one no matter how many times the returned function is invoked (see https://ramdajs.com/docs/#once).
+- Implement ISO Currency Code ISO 4217:2015 (see https://www.iso.org/standard/64758.html).
+- Use enum with constant values for currencies: 
+  `enum Currencies { USD = “USD”, EUR = “EUR”, GBP = “GBP” // add all other iso currencies }`
+- Improve the styling with a `CSS-in-JS` solution.
+- Write tests (End-to-End test and unit tests).
+
+### Time spent
+I spent a total of about 8 hours. 
+
+### What I love about this app
+I really enjoyed building something new using TypeScript and building a graph! It was a bit different from ES6 but I could find some similarities and logic from Scala, which I have some experience with. I hope my next job will give me the opportunity to work in TypeScript.
+
+What I like about the implementation is the architecture of the app:
+- `components` using the atomic design, 
+- `api` for API call which I designed in a reusable way,
+- `utils` for helper function,
+- `store` for state management. 
+I think it is easy to grow an app from this architecture which I appreciate.
+
+Overall, I enjoyed the opportunity to build something new. I've never used `react chart.js 2` before this project, and it makes me want to experiment more with that. 
 
 ### Author
 Manon Jacquin (https://github.com/manonja)
