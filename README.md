@@ -9,7 +9,7 @@ https://www.alphavantage.co/.
 ### Quick Start
 Clone the project https://github.com/manonja/FX-Calculator
 
-- `cd FX-Calculator`
+- `cd FX-Calculator/fx-calculator`
 -  `yarn`
 - `yarn start`
 
