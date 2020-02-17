@@ -1,21 +1,9 @@
-import React, { FunctionComponent } from 'react'; // importing FunctionComponent
+import React, { FunctionComponent } from 'react'; 
+import { ccySymbol }  from '../../../utils';
 
 interface Props {
   result: number,
   to_ccy: string
-}
-
-function ccySymbol(ccy: string): string {
-  switch (ccy) {
-    case 'USD':
-      return '$'
-    case 'EUR':
-      return '€'
-    case 'GBP':
-      return '£'
-    default:
-      return ccy
-  }
 }
 
 const ResultField: FunctionComponent<Props> = ({ result, to_ccy }) => {
@@ -23,7 +11,7 @@ const ResultField: FunctionComponent<Props> = ({ result, to_ccy }) => {
   // TODO round output
   return (
   <h3 style={{textAlign:'center'}}>
-    {ccySymbol(to_ccy) + " " + result }
+    {`${ccySymbol(to_ccy)} ${result.toFixed(2)}`}
   </h3>)
 }
 

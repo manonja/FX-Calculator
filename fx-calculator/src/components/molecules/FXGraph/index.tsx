@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react'; // importing FunctionComponent
-import { Chart } from 'chart.js';
 import moment from 'moment';
 import { Line } from 'react-chartjs-2';
 
@@ -50,6 +49,7 @@ export const FXChart: FunctionComponent<FXChartProps> = ({ timeSeries, timeSerie
         };
 
         const options: object = {
+            maintainAspectRatio: false,
             scales: {
                 xAxes: [{
                     type: 'time',
@@ -80,8 +80,8 @@ export const FXChart: FunctionComponent<FXChartProps> = ({ timeSeries, timeSerie
         }
 
         return (
-            <div className="FXGraph">
-                <div>
+            <div className="FXGraph" style={{display: "flex", alignItems: 'center', justifyContent: 'center', flexDirection: 'column', paddingTop: '20px'}}>
+                <div style={{height:'400px', width: '900px'}}>
                     <Line data={data} options={options}/>
                 </div>
             </div>

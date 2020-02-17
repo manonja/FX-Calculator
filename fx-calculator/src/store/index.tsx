@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {FXFormState} from '../components/organism/FXForm'
-import { FXHistory, FXHistoryInit, FXTimeSeries } from '../components/atoms/FXGraph'
+import { FXHistory, FXHistoryInit, FXTimeSeries } from '../components/molecules/FXGraph'
 
 export enum ActionType { START_APP, UPDATE_FORM, UPDATE_FX_RATE, UPDATE_FX_HISTORY };
 
@@ -11,7 +11,7 @@ export interface AppState extends FXFormState, FXHistory {
 export const initialFXState: AppState = {
     from_ccy: 'EUR',
     to_ccy: 'GBP',
-    amount: 10,
+    amount: 0,
     fx_rate: 0,
     timeSeries: FXHistoryInit.timeSeries,
     timeSeriesLoaded: FXHistoryInit.timeSeriesLoaded

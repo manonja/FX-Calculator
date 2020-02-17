@@ -5,24 +5,21 @@ import { InputField } from '../../atoms/InputField';
 import { CcySelectField } from '../../atoms/CcySelectField';
 
 export interface FXFormState {
-    from_ccy: string,
-    to_ccy: string,
-    amount: number
-};
+    from_ccy: string;
+    to_ccy: string;
+    amount: number;
+}
 
 interface FormProps {
     onSubmit: (values: FXFormState) => void;
     state: FXFormState;
-};
+}
 
 const FXForm: React.FC<FormProps> = ({ onSubmit, state }) => {
     return (
         <div style={{ textAlign: 'center' }}>
-            {/* <AppContextConsumer>{appContext => appContext && ( */}
-
             <Formik
-                // initialValues={{ from_ccy: appContext.from_ccy, to_ccy: appContext.to_ccy, amount: appContext.amount }}
-                initialValues={{from_ccy: state.from_ccy, to_ccy: state.to_ccy, amount: state.amount }}
+                initialValues={{ from_ccy: state.from_ccy, to_ccy: state.to_ccy, amount: state.amount }}
                 onSubmit={values => {
                     onSubmit(values);
                 }}
@@ -30,13 +27,21 @@ const FXForm: React.FC<FormProps> = ({ onSubmit, state }) => {
                 {() => (
                     <Form>
                         <div>
-                            <Field name="from_ccy" placeholder="Choose base currency" component={CcySelectField}></Field>
+                            <Field
+                                name="from_ccy"
+                                placeholder="Choose base currency"
+                                component={CcySelectField}
+                            ></Field>
                         </div>
-                        <br/>
+                        <br />
                         <div>
-                            <Field name="to_ccy" placeholder="Choose target currency" component={CcySelectField}></Field>
+                            <Field
+                                name="to_ccy"
+                                placeholder="Choose target currency"
+                                component={CcySelectField}
+                            ></Field>
                         </div>
-                        <br/>
+                        <br />
                         <div>
                             <Field name="amount" placeholder="Amount" component={InputField}></Field>
                         </div>
@@ -44,9 +49,6 @@ const FXForm: React.FC<FormProps> = ({ onSubmit, state }) => {
                     </Form>
                 )}
             </Formik>
-            {/* )} */}
-            {/* </AppContextConsumer> */}
-
         </div>
     );
 };

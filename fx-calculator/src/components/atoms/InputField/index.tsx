@@ -7,9 +7,10 @@ interface Props extends FieldProps {
     placeholder: string;
 }
 
-export const InputField: React.FC<Props> = ({placeholder, field}) => {
+export const InputField: React.FC<Props> = ({placeholder, field }) => {
  return (
     <TextField
+    inputProps={{ style: {textAlign: 'end'} }}
     placeholder={placeholder}
     {...field}
 />
