@@ -28,6 +28,7 @@ The app will run on http://localhost:3000
 
 ### Improvements
 - Use `async/await` and implement a error handling for API requests.
+- Adds validation for the input to accept only numbers. 
 - Use the Ramda library and the `R.once()` function to limit the number of API call to one no matter how many times the returned function is invoked (see https://ramdajs.com/docs/#once).
 - Implement ISO Currency Code ISO 4217:2015 (see https://www.iso.org/standard/64758.html).
 - Use enum with constant values for currencies: 
